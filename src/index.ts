@@ -1,19 +1,16 @@
-import express from "express";
-import cors from "cors";
-import { AddressInfo } from "net";
-import connection from "./connection";
-import { Request, Response } from "express";
+import express from 'express';
+import cors from 'cors';
+import { Request, Response } from 'express';
 
 const app = express();
 
 app.use(express.json());
 app.use(cors());
 
-const server = app.listen(process.env.PORT || 3003, () => {
-  if (server) {
-    const address = server.address() as AddressInfo;
-    console.log(`Server is running in http://localhost:${address.port}`);
-  } else {
-    console.error(`Failure upon starting server.`);
-  }
+app.listen(process.env.PORT || 3003, () => {
+	console.clear();
+	console.log(`Server is running in http://localhost:${process.env.PORT || 3003}`);
 });
+
+
+app.get('/', (req: Request,res: Response) => res.status(200).send({message: 'hello world!'}));
