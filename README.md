@@ -1,3 +1,3 @@
-# template-node-js-repo
+# Cookenu Project API
 
-Template for creating new APIs using node.js, express and knex.
+Work in progress...
