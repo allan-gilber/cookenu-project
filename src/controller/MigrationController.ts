@@ -13,7 +13,6 @@ export class MigrationController extends DataBase {
 		} catch(error: any){
 			console.log('error in MigrationController:', error.message);
 		} finally{
-			console.log('close');
 			this.closeConnection();
 		}
 	}

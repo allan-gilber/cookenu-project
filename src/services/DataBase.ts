@@ -1,12 +1,12 @@
 
 import knex, { Knex } from 'knex';
-import dotenv from 'dotenv';
+import {config} from 'dotenv';
 
 
 export class DataBase {
 
 	protected connection(): Knex {
-		dotenv.config();
+		config();
 
 		return knex({
 			client: 'mysql',
