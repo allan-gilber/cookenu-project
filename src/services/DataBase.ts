@@ -1,12 +1,13 @@
 
-import knex from 'knex';
+import knex, { Knex } from 'knex';
 import dotenv from 'dotenv';
 
 
-export class Connection {
+export class DataBase {
 
-	public () {
+	protected connection(): Knex {
 		dotenv.config();
+
 		return knex({
 			client: 'mysql',
 			connection: {
@@ -16,5 +17,10 @@ export class Connection {
 				password: process.env.DB_PASSWORD,
 				database: process.env.DB_SCHEMA,
 			},
-		});}
+		});
+	}
+
+	protected  closeConnection(){ 
+		return this.connection().destroy();
+	}
 }
