@@ -1,0 +1,23 @@
+export class SignUp {
+	constructor(private email: string,private  name: string,private  password: string){}
+
+	public getSignupInfo(){
+		return [this.email, this.name, this.password];
+	}
+}
+
+export class Recipe {
+	constructor(private title: string,private  description: string,private  creationDate: Date){}
+
+	public getRecipeInfo(){
+		return [this.title, this.description, this.creationDate];
+	}
+}
+
+export class Follower {
+	constructor(private follower_table_id: string,private  user_id: string,private  follower_id: Date){}
+
+	public getRecipeInfo(){
+		return [this.follower_table_id, this.user_id, this.follower_id];
+	}
+}
