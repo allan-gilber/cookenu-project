@@ -1,8 +1,12 @@
 
 import { Request, Response } from 'express';
-import { app } from './controller/app';
-import { SignUpController } from './controller/SignupController';
+import app from './controller/app';
+import SignInController from './controller/SignInController';
+import SignUpController from './controller/SignUpController';
 
 
 
-app.get('/signup', (req: Request, resp: Response) => {new SignUpController().createNewUser(req, resp);});
+app.get('/signIn', (req: Request, resp: Response) => new SignInController().loginToServer(req, resp));
+
+app.post('/signUp', (req: Request, resp: Response) => new SignUpController().createNewUser(req, resp));
+

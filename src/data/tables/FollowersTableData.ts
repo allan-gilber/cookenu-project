@@ -1,8 +1,8 @@
-import { DataBase } from '../services/DataBase';
+import DataBase from '../../services/DataBase';
 
-export class FollowersTableData extends DataBase {
+export default class FollowersTableData extends DataBase {
 	public async createFollowersTable(){ 
-		return await this.connection().schema.createTable('followers', (table) =>{
+		return await this.connection().schema.createTable('followers', (table: any) =>{
 			table.string('follower_table_id').primary();
 			table.string('user_id').notNullable().unique();
 			table.string('follower_id').notNullable();

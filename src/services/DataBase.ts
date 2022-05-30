@@ -3,7 +3,7 @@ import knex, { Knex } from 'knex';
 import {config} from 'dotenv';
 
 
-export class DataBase {
+export default class DataBase {
 
 	protected connection(): Knex {
 		config();

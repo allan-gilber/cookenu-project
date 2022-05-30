@@ -1,17 +1,29 @@
 import { Request, Response } from 'express';
-import { SignUpBusiness } from '../business/SignUpBusiness';
-import { DataBase } from '../services/DataBase';
+import SignUpBusiness from '../business/SignUpBusiness';
+import ErrorMessages from '../data/utilities/MessageErrors';
+import DataBase from '../services/DataBase';
 
 
-export class SignUpController extends DataBase{
+export default class SignUpController extends DataBase{
 
 	async createNewUser (req: Request, resp: Response){
 		try {
-			await new SignUpBusiness().createUser(req, resp);
+			await new SignUpBusiness().createUser(req);
+
+			const succesfullResult = new ErrorMessages().getErrorMessage('signUpSuccesfull');
+
+			resp.statusCode = succesfullResult.status;
+			resp.send({message: succesfullResult.message});
 		} catch(error: any){
-			console.log('error in MigrationController:', error.message);
+			console.log('error in SignUpController:', error?.message);
+			const errorMessage = new ErrorMessages().getErrorMessage(error?.message);
+
+			resp.statusCode = errorMessage.status ?  errorMessage.status : 500;
+
+			resp.send({message: errorMessage.message});
 		} finally{
 			this.closeConnection();
 		}
+		return;
 	}
 }

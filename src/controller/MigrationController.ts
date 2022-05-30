@@ -1,5 +1,5 @@
-import { TableSchemaBusiness } from '../business/TableSchemaBusiness';
-import { DataBase } from '../services/DataBase';
+import TableSchemaBusiness from '../business/TableSchemaBusiness';
+import DataBase from '../services/DataBase';
 
 
 export class MigrationController extends DataBase {

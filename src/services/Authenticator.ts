@@ -1,10 +1,10 @@
-import { user, userId } from '../model/User';
+import { userId, userRole } from '../model/User';
 import { config } from 'dotenv';
 import { JwtPayload, Secret, sign, verify } from 'jsonwebtoken';
 
 
-export class Authenticator {
-	generateNewToken = async ( payload: user ) =>{
+export default class Authenticator {
+	generateNewToken = async ( payload: userRole ) =>{
 		config();
 
 		return sign(

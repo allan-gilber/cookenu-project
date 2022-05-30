@@ -1,9 +1,9 @@
-import { RecipeTableData } from '../data/RecipeTableData';
-import { UsersTableData } from '../data/UsersTableData';
-import { FollowersTableData } from '../data/FollowersTableData';
+import RecipeTableData from '../data/tables/RecipeTableData';
+import UsersTableData from '../data/tables/UsersTableData';
+import FollowersTableData from '../data/tables/FollowersTableData';
 
 
-export class TableSchemaBusiness {
+export default class TableSchemaBusiness {
 	public async createUserTableSchema (){
 		return await new UsersTableData().createUserTable();
 	}
