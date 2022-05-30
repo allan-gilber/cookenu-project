@@ -1,19 +1,22 @@
-import { Request, Response } from 'express';
-import { UserData } from '../data/UserData';
-import { IdGenerator } from '../services/IdGenerator';
+import { Request } from 'express';
+import UserData from '../data/UserData';
+import HashManager from '../services/HashManager';
+import IdGenerator from '../services/IdGenerator';
 
-export class SignUpBusiness{
+export default class SignUpBusiness{
 
-	async createUser(req: Request, resp: Response){
-		const { userName, userEmail, userPassword } = req.body;
+	async createUser(req: Request){
+		const { userName, userEmail, userPassword, userRole } = req.body;
 
-		if(!userName || !userEmail || !userPassword) throw 'emptyParamters';
+		if(!userName || !userEmail || !userPassword || !userRole) throw new Error('emptyParamtersForSignup');
+		if(userPassword.length < 6) throw new Error('passwordMinimumLength');
+		if(!['USER', 'ADMIN'].includes(userRole)) throw new Error('invalidRole');
+
+		await new UserData().checkUserEmailOnDatabase(userEmail);
 
 		const userId = new IdGenerator().generateId();
+		const passwordHash = new HashManager().createHash(userPassword);
 
-		const inertIntoDatabase = await  new UserData().insertUserData(userId, userName, userEmail, userPassword);
-		if(inertIntoDatabase){
-			resp.status(201).send({status: 'Success!', userId: userId});
-		}
+		await new UserData().insertUserData(userId, userName, userEmail, passwordHash, userRole);
 	}
 }
