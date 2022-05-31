@@ -1,7 +1,7 @@
 import { Request } from 'express';
-import UserData from '../data/UserData';
-import Authenticator from '../services/Authenticator';
-import HashManager from '../services/HashManager';
+import UserData from '../../data/UserData';
+import Authenticator from '../../services/Authenticator';
+import HashManager from '../../services/HashManager';
 
 export default class SignInBusiness {
 

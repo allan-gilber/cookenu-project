@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
-import SignInBusiness from '../business/SignInBusiness';
-import ErrorMessages from '../data/utilities/MessageErrors';
-import DataBase from '../services/DataBase';
+import SignInBusiness from '../../business/userBusiness/SignInBusiness';
+import ErrorMessages from '../MessageErrorsController';
+import DataBase from '../../services/DataBase';
 
 
 export default class SignInController extends DataBase{

@@ -1,4 +1,4 @@
-import { errorMessage } from '../../../model/User';
+import { errorMessage } from '../model/User';
 
 const errorMessagesData: {[key: string]: errorMessage} = {
 	genericError: {status: 500, message:'oops, something went wrong!'},

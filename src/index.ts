@@ -1,9 +1,9 @@
 
 import { Request, Response } from 'express';
 import app from './controller/app';
-import AccountDataController from './controller/getAccountDataController';
-import SignInController from './controller/SignInController';
-import SignUpController from './controller/SignUpController';
+import AccountDataController from './controller/userControllers/getAccountDataController';
+import SignInController from './controller/userControllers/SignInController';
+import SignUpController from './controller/userControllers/SignUpController';
 
 
 

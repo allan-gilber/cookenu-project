@@ -1,7 +1,7 @@
 import { Request } from 'express';
-import UserData from '../data/UserData';
-import HashManager from '../services/HashManager';
-import IdGenerator from '../services/IdGenerator';
+import UserData from '../../data/UserData';
+import HashManager from '../../services/HashManager';
+import IdGenerator from '../../services/IdGenerator';
 
 export default class SignUpBusiness{
 

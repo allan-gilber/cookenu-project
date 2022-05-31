@@ -1,6 +1,6 @@
 import { Request } from 'express';
-import UserData from '../data/UserData';
-import Authenticator from '../services/Authenticator';
+import UserData from '../../data/UserData';
+import Authenticator from '../../services/Authenticator';
 
 export default class AccountDataBusiness{
 
