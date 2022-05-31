@@ -7,7 +7,10 @@ const errorMessagesData: {[key: string]: errorMessage} = {
 	invalidRole: {status: 400, message:'please, provide a valid role for your account.'},
 	invalidParamtersForSignIn: {status: 400,message:'invalid credentials!'},
 	emailAlreadyInUse: {status: 400, message:'the email provided is already in use.'},
-	signUpSuccesfull: {status: 201, message: 'user succesfull created!'}
+	signUpSuccesfull: {status: 201, message: 'user succesfull created!'},
+	invalidUserId: {status: 400, message: 'invalid userId'},
+	invalidToken: {status: 400, message: 'this endpoint requires a valid authorization header.'}
+
 };
 
 export default errorMessagesData;

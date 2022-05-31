@@ -14,13 +14,15 @@ export default class Authenticator {
 		);
 	};
 
-	validateToken = (token: string): userId | null =>{
+	validateToken = (token: string): userRole | null =>{
+		config();
+
 		try{
 			const tokenData = verify(  
 				token,
                 process.env.JWT_KEY as Secret
 			) as JwtPayload;
-			return { userId: tokenData.id };
+			return { userId: tokenData.userId, userRole: tokenData.userRole };
 		}catch (error){
 			console.log(error, 'Failure in token validation.');
 			return null;
