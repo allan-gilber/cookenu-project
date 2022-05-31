@@ -11,10 +11,7 @@ export default class FollowersBusiness {
 		const token = req.headers.authorization;
 		const { userToBeFollowedId } = req.body;
 
-		
-
 		const tokenData: userRole | string = new Authenticator().validateToken(token);
-		console.log(tokenData);
 		
 		if(tokenData.userId === userToBeFollowedId) throw new Error('youCantFollowYourself');
 
