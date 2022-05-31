@@ -1,5 +1,5 @@
 import DataBase from '../../../services/DataBase';
-// import followersDummyData from '../dummyData/followersDummyData.json';
+import followersDummyData from '../dummyData/followersDummyData.json';
 
 export default class FollowersTableData extends DataBase {
 	async createFollowersTable(){ 
@@ -11,8 +11,8 @@ export default class FollowersTableData extends DataBase {
 		}).then(()=> console.log('Table "followers" successful created!'));
 	}
 
-	// async populateFollowersTable(){
-	// 	return await this.connection().table('followers').insert(followersDummyData)
-	// 		.then(()=> console.log('Table "Followers" successful populated!'));
-	// }
+	async populateFollowersTable(){
+		return await this.connection().table('followers').insert(followersDummyData)
+			.then(()=> console.log('Table "Followers" successful populated!'));
+	}
 }

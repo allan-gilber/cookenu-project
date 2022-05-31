@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import AccountDataBusiness from '../../business/userBusiness/AccountDataBusiness';
-import ErrorMessages from '../MessageErrorsController';
+import ErrorMessages from '../errorsControllers/MessageErrorsController';
 import DataBase from '../../services/DataBase';
 
 

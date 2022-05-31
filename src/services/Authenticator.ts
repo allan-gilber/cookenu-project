@@ -14,9 +14,9 @@ export default class Authenticator {
 		);
 	};
 
-	validateToken = (token: string): userRole | null => {
+	validateToken = (token: string | undefined): userRole => {
+		if(!token) throw new Error('invalidToken');
 		config();
-
 		try{
 			const tokenData = verify(  
 				token,
@@ -25,7 +25,7 @@ export default class Authenticator {
 			return { userId: tokenData.userId, userRole: tokenData.userRole };
 		} catch (error){
 			console.log('Failure in token validation.');
-			return null;
+			throw new Error('invalidToken');
 		}
 	};
 }

@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import ErrorMessages from '../MessageErrorsController';
+import ErrorMessages from '../errorsControllers/MessageErrorsController';
 import DataBase from '../../services/DataBase';
 import FollowersBusiness from '../../business/followersBusiness/FollowersBusiness';
 

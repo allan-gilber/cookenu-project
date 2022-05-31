@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import SignUpBusiness from '../../business/userBusiness/SignUpBusiness';
-import ErrorMessages from '../MessageErrorsController';
+import ErrorMessages from '../errorsControllers/MessageErrorsController';
 import DataBase from '../../services/DataBase';
 
 
