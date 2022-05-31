@@ -26,7 +26,7 @@ export default class UserData extends DataBase {
 			});
 	}
 
-	async getUserDataForLogin(userEmail: string){
+	async requestUserDataForLogin(userEmail: string){
 		return await this.connection().table('users').select('user_id', 'user_password', 'user_role').where('user_email', '=', userEmail)
 			.then((response): any => {
 				if(!response[0]?.user_password) throw new Error('invalidParamtersForSignIn'); 
@@ -34,8 +34,8 @@ export default class UserData extends DataBase {
 			});
 	}
 
-	async getNonSensitiveData(userId: string){
-		return await this.connection().table('users').select('user_id', 'user_name', 'user_email', 'user_role').where('user_id', '=', userId)
+	async requestNonSensitiveData(userId: string) {
+		return await this.connection().table('users').select('user_id', 'user_name', 'user_email').where('user_id', '=', userId)
 			.then((response): any => {
 				if(!response[0]?.user_id) throw new Error('invalidParamtersForSignIn'); 
 				return response[0];
