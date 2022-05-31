@@ -2,7 +2,7 @@ import { userRole } from '../model/User';
 import DataBase from '../services/DataBase';
 
 export default class UserData extends DataBase {	
-	async insertUserData(userId: string, userName: string, userEmail: string, userPassword: string, userRole: userRole): Promise<any>{
+	async insertUserData(userId: string, userName: string, userEmail: string, userPassword: string, userRole: userRole): Promise<any> {
 		return await this.connection().table('users').insert({
 			user_id: userId,
 			user_name:userName,
@@ -16,6 +16,14 @@ export default class UserData extends DataBase {
 		return await this.connection().table('users').select('user_email').where('user_email', '=', userEmail)
 			.then((response) => { 
 				if(response[0]?.user_email) throw new Error('emailAlreadyInUse'); });
+	}
+
+	async checkUserIdOnDatabase(userId: string){
+		return await this.connection().table('users').select('user_id').where('user_id', '=', userId)
+			.then((response): any => {
+				if(!response[0]?.user_id) throw new Error('invalidUserId'); 
+				return response[0];
+			});
 	}
 
 	async getUserDataForLogin(userEmail: string){

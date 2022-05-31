@@ -10,10 +10,10 @@ export default class SignUpController extends DataBase{
 		try {
 			await new SignUpBusiness().createUser(req);
 
-			const succesfullResult = new ErrorMessages().getErrorMessage('signUpSuccesfull');
+			const successfulResult = new ErrorMessages().getErrorMessage('signUpsuccessful');
 
-			resp.statusCode = succesfullResult.status;
-			resp.send({message: succesfullResult.message});
+			resp.statusCode = successfulResult.status;
+			resp.send({message: successfulResult.message});
 		} catch(error: any){
 			console.log('error in SignUpController:', error?.message);
 			const errorMessage = new ErrorMessages().getErrorMessage(error?.message);
