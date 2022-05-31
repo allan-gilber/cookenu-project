@@ -1,6 +1,7 @@
 
 import { Request, Response } from 'express';
 import app from './controller/app';
+import FollowersController from './controller/followersControllers/FollowersController';
 import RecipeController from './controller/recipeControllers/RecipeController';
 import AccountDataController from './controller/userControllers/getAccountDataController';
 import SignInController from './controller/userControllers/SignInController';
@@ -12,5 +13,5 @@ app.get('/signIn', (req: Request, resp: Response) => new SignInController().logi
 app.get('/getAccountInformation/', (req: Request, resp: Response) => new AccountDataController().getAccountData(req, resp));
 
 app.post('/signUp', (req: Request, resp: Response) => new SignUpController().createNewUser(req, resp));
+app.post('/followers/followUser', (req: Request, resp: Response) => new FollowersController().createRecipe(req, resp));
 app.post('/recipe/createNewRecipe', (req: Request, resp: Response) => new RecipeController().createRecipe(req, resp));
-

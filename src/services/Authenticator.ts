@@ -14,7 +14,7 @@ export default class Authenticator {
 		);
 	};
 
-	validateToken = (token: string): userRole | null =>{
+	validateToken = (token: string): userRole | null => {
 		config();
 
 		try{
@@ -23,7 +23,7 @@ export default class Authenticator {
                 process.env.JWT_KEY as Secret
 			) as JwtPayload;
 			return { userId: tokenData.userId, userRole: tokenData.userRole };
-		}catch (error){
+		} catch (error){
 			console.log('Failure in token validation.');
 			return null;
 		}

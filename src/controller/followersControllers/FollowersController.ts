@@ -1,19 +1,20 @@
 import { Request, Response } from 'express';
 import ErrorMessages from '../MessageErrorsController';
 import DataBase from '../../services/DataBase';
-import RecipeBusiness from '../../business/recipebusiness/RecipeBusiness';
+import FollowersBusiness from '../../business/followersBusiness/FollowersBusiness';
 
 
-export default class RecipeController extends DataBase{
+export default class FollowersController extends DataBase{
 
 	async createRecipe (req: Request, resp: Response){
 		try {
-			await new RecipeBusiness().createNewRecipe(req);
+			const followedUserName = await new FollowersBusiness().followUser(req);
 
 			resp.statusCode = 201;
-			resp.send({ message: 'recipe successful created!'});
+			console.log('retorno',followedUserName);
+			resp.send({ message: `the user ${followedUserName[0]?.user_name} is now being followed!`});
 		} catch(error: any){
-			console.log('error in RecipeController:', error?.message);
+			console.log('error in FollowersController:', error?.message);
 
 			const errorMessage = new ErrorMessages().getErrorMessage(error?.message);
 

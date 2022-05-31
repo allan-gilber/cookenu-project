@@ -10,9 +10,10 @@ export class MigrationController extends DataBase {
 			await new TableSchemaBusiness().createUserTableSchema()
 				.then(() => new TableSchemaBusiness().createReciperTableSchema())
 				.then(() => new TableSchemaBusiness().createFollowersTableSchema())
-				.then(() => console.log('Table Schema succesfully created!'));
+				.then(() => console.log('Table Schema successfully created!'));
 
-			await new PopulationBusiness().populateUsersTable();
+			await new PopulationBusiness().populateUsersTable()
+				.then(() => new PopulationBusiness().populateRecipesTable());
 		} catch(error: any){
 			console.log('error in MigrationController:', error.message);
 		} finally{
