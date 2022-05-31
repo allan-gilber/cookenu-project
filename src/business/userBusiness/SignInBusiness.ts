@@ -11,7 +11,7 @@ export default class SignInBusiness {
 		if(!userEmail || !userPassword) throw new Error('invalidParamtersForSignIn');
 		if(userPassword.length < 6) throw new Error('invalidParamtersForSignIn');
 
-		const userData = await new UserData().getUserDataForLogin(userEmail);
+		const userData = await new UserData().requestUserDataForLogin(userEmail);
 		const passwordHash = new HashManager().compareHashs(userPassword, userData.user_password);  
 
 		if(!passwordHash) throw new Error('invalidParamtersForSignIn');
