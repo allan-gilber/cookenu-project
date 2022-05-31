@@ -11,7 +11,7 @@ export default class AccountDataController extends DataBase{
 			const accountData = await new AccountDataBusiness().getAccountData(req);
 
 			resp.statusCode = 201;
-			resp.send({ token: accountData});
+			resp.send({data: accountData});
 		} catch(error: any){
 			console.log('error in getAccountDataController:', error?.message);
 

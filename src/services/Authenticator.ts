@@ -22,7 +22,6 @@ export default class Authenticator {
 				token,
                 process.env.JWT_KEY as Secret
 			) as JwtPayload;
-			console.log('ida', tokenData);
 			return { userId: tokenData.userId, userRole: tokenData.userRole };
 		}catch (error){
 			console.log(error, 'Failure in token validation.');

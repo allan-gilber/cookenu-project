@@ -8,7 +8,7 @@ import SignUpController from './controller/SignUpController';
 
 
 app.get('/signIn', (req: Request, resp: Response) => new SignInController().loginToServer(req, resp));
-app.get('/getAccountInformation/:userId', (req: Request, resp: Response) => new AccountDataController().getAccountData(req, resp));
+app.get('/getAccountInformation/', (req: Request, resp: Response) => new AccountDataController().getAccountData(req, resp));
 
 app.post('/signUp', (req: Request, resp: Response) => new SignUpController().createNewUser(req, resp));
 
