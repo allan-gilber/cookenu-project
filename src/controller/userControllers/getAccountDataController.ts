@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
-import AccountDataBusiness from '../business/getAccountDataBusiness';
-import ErrorMessages from '../data/utilities/MessageErrors';
-import DataBase from '../services/DataBase';
+import AccountDataBusiness from '../../business/userBusiness/getAccountDataBusiness';
+import ErrorMessages from '../MessageErrorsController';
+import DataBase from '../../services/DataBase';
 
 
 export default class AccountDataController extends DataBase{

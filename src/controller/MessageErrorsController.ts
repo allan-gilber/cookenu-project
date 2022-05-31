@@ -1,5 +1,5 @@
-import { errorMessage } from '../../model/User';
-import errorMessagesData from './errorMessagesList/errorMessagesData';
+import { errorMessage } from '../model/User';
+import errorMessagesData from '../business/errorMessagesDataBusiness';
 
 export default class ErrorMessages {
 	private errorMessagesObject = errorMessagesData;

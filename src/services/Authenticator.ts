@@ -24,7 +24,7 @@ export default class Authenticator {
 			) as JwtPayload;
 			return { userId: tokenData.userId, userRole: tokenData.userRole };
 		}catch (error){
-			console.log(error, 'Failure in token validation.');
+			console.log('Failure in token validation.');
 			return null;
 		}
 	};
