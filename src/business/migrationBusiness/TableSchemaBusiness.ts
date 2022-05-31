@@ -1,6 +1,6 @@
-import RecipeTableData from '../data/tables/RecipeTableData';
-import UsersTableData from '../data/tables/UsersTableData';
-import FollowersTableData from '../data/tables/FollowersTableData';
+import RecipeTableData from '../../data/migrationData/tablesData/RecipeTableData';
+import UsersTableData from '../../data/migrationData/tablesData/UsersTableData';
+import FollowersTableData from '../../data/migrationData/tablesData/FollowersTableData';
 
 
 export default class TableSchemaBusiness {

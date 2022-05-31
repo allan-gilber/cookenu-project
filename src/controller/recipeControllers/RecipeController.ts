@@ -8,10 +8,10 @@ export default class RecipeController extends DataBase{
 
 	async createRecipe (req: Request, resp: Response){
 		try {
-			const tokenRequest = await new RecipeBusiness().createNewRecipe(req);
+			await new RecipeBusiness().createNewRecipe(req);
 
 			resp.statusCode = 201;
-			resp.send({ token: tokenRequest});
+			resp.send({ message: 'recipe succesfull created!'});
 		} catch(error: any){
 			console.log('error in RecipeController:', error?.message);
 

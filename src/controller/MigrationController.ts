@@ -1,4 +1,5 @@
-import TableSchemaBusiness from '../business/TableSchemaBusiness';
+import PopulationBusiness from '../business/migrationBusiness/PopulationBusiness';
+import TableSchemaBusiness from '../business/migrationBusiness/TableSchemaBusiness';
 import DataBase from '../services/DataBase';
 
 
@@ -10,11 +11,14 @@ export class MigrationController extends DataBase {
 				.then(() => new TableSchemaBusiness().createReciperTableSchema())
 				.then(() => new TableSchemaBusiness().createFollowersTableSchema())
 				.then(() => console.log('Table Schema succesfully created!'));
+
+			await new PopulationBusiness().populateUsersTable();
 		} catch(error: any){
 			console.log('error in MigrationController:', error.message);
 		} finally{
 			this.closeConnection();
 		}
+		return;
 	}
 }
 
