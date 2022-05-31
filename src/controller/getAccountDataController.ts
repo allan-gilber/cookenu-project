@@ -13,7 +13,7 @@ export default class AccountDataController extends DataBase{
 			resp.statusCode = 201;
 			resp.send({data: accountData});
 		} catch(error: any){
-			console.log('error in getAccountDataController:', error?.message);
+			console.log('error in AccountDataController:', error?.message);
 
 			const errorMessage = new ErrorMessages().getErrorMessage(error?.message);
 

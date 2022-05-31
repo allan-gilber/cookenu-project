@@ -11,7 +11,7 @@ export default class AccountDataBusiness{
 
 		const tokenData = new Authenticator().validateToken(token);
 
-		if(!tokenData?.userId) throw 'invalidToken';
+		if(!tokenData?.userId) throw new Error('invalidToken');
 
 		return await new UserData().getNonSensitiveData(tokenData.userId as string);
 	}
