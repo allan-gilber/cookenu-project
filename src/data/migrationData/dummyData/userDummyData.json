@@ -1,0 +1,65 @@
+[
+	{
+		"user_id" : "0aba2966-ab49-420d-af57-8f64b2485597",
+		"user_name" : "Mariana",
+		"user_email" : "mariana@google.com",
+		"user_password" : "$2a$12$qGz0sEX1BpOl85WGmfrAUu.t/u5y159XKjzp2OVh0723xGJcAMxd2",
+		"user_role" : "USER"
+	},
+	{
+		"user_id" : "16912c3b-a3a6-4b84-86a7-5156705e51b7",
+		"user_name" : "Allan",
+		"user_email" : "allan@google.com",
+		"user_password" : "$2a$12$YIldXphSPf4NIysSYbdd/.JKFCsLELfbSVmnCzBjiDmNdUyfCNyzK",
+		"user_role" : "ADMIN"
+	},
+	{
+		"user_id" : "5bc0e116-9a3d-46e6-b41b-b5d59ae2d3b5",
+		"user_name" : "Alexa",
+		"user_email" : "alexa@google.com",
+		"user_password" : "$2a$12$v3OgQNoZMk/FARLr7vTdd.WdeWlBlNiqVOuK6HP7hBNZr8CcZvDwm",
+		"user_role" : "USER"
+	},
+	{
+		"user_id" : "7febaf7f-272c-4949-a985-e1b1c6bb7a33",
+		"user_name" : "Roberto",
+		"user_email" : "roberto@google.com",
+		"user_password" : "$2a$12$pOCEeucGYbA8CsQz3M1W0.t2X.tSUS11rQQLNBMn9I813pLToSQQS",
+		"user_role" : "USER"
+	},
+	{
+		"user_id" : "aca8d410-073a-4fb9-b700-36a43af46a5e",
+		"user_name" : "Jessica",
+		"user_email" : "jessica@google.com",
+		"user_password" : "$2a$12$24t9KvvXdkBxST9z5rQadOoNsKc7uiQeRhKEp89HvPWEPrD1T0cFW",
+		"user_role" : "USER"
+	},
+	{
+		"user_id" : "ad7aad79-fead-4363-9e40-ffc2ea8af73a",
+		"user_name" : "Camila",
+		"user_email" : "camila@google.com",
+		"user_password" : "$2a$12$F4HGVb5DALcFCdaYn.hWfOQsT0k1cOjFfn1SBUO3WLn4j8cb8zu9W",
+		"user_role" : "USER"
+	},
+	{
+		"user_id" : "d69d3b64-cb42-43ae-b7a4-a2856c2f50c0",
+		"user_name" : "Eloiza",
+		"user_email" : "eloiza@google.com",
+		"user_password" : "$2a$12$KLq12aMWxxCPxEUiAaio1ukBCBM6xigAgx5Wyv9t56JX.FhRGdE3C",
+		"user_role" : "USER"
+	},
+	{
+		"user_id" : "f49c3e4d-4af0-4519-84f4-2304d1723c72",
+		"user_name" : "Michael",
+		"user_email" : "michael@google.com",
+		"user_password" : "$2a$12$ZBeKsog1UcgJNgx1CAUM5u5NuHnzf5GfQlNlNubrACyrZ1WLt0zE6",
+		"user_role" : "USER"
+	},
+	{
+		"user_id" : "fda9d632-bbab-4737-b015-cd1d6ec5692a",
+		"user_name" : "Lorena",
+		"user_email" : "lorena@google.com",
+		"user_password" : "$2a$12$fGNoXwxTWhE8TSLRxVDxdeIKa/bsGtrrJ/x0V0HE12EeEmvOEMpiu",
+		"user_role" : "USER"
+	}
+]

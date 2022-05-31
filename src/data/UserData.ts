@@ -1,7 +1,8 @@
+import { userRole } from '../model/User';
 import DataBase from '../services/DataBase';
 
 export default class UserData extends DataBase {	
-	async insertUserData(userId: string, userName: string, userEmail: string, userPassword: string, userRole: 'ADMIN' | 'USER'): Promise<any>{
+	async insertUserData(userId: string, userName: string, userEmail: string, userPassword: string, userRole: userRole): Promise<any>{
 		return await this.connection().table('users').insert({
 			user_id: userId,
 			user_name:userName,

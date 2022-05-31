@@ -9,7 +9,8 @@ const errorMessagesData: {[key: string]: errorMessage} = {
 	emailAlreadyInUse: {status: 400, message:'the email provided is already in use.'},
 	signUpSuccesfull: {status: 201, message: 'user succesfull created!'},
 	invalidUserId: {status: 400, message: 'invalid userId'},
-	invalidToken: {status: 400, message: 'this endpoint requires a valid authorization header.'}
+	invalidToken: {status: 400, message: 'this endpoint requires a valid authorization header.'},
+	invalidParamtersForRecipeCreation: {status: 400, message: 'please, provide a valid title and description of the recipe.'}
 
 };
 

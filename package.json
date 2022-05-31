@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "ts-node-dev ./src/index.ts",
     "build": "tsc",
-    "migration": "ts-node-dev ./src/controller/migrationController.ts"
+    "migration": "ts-node-dev ./src/controller/migrationController.ts --ignore-watch"
   },
   "repository": {
     "type": "git",

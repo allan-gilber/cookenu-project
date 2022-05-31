@@ -1,4 +1,4 @@
-import DataBase from '../../services/DataBase';
+import DataBase from '../../../services/DataBase';
 
 export default class FollowersTableData extends DataBase {
 	public async createFollowersTable(){ 

@@ -1,19 +1,19 @@
 import { Request, Response } from 'express';
-import AccountDataBusiness from '../../business/userBusiness/AccountDataBusiness';
 import ErrorMessages from '../MessageErrorsController';
 import DataBase from '../../services/DataBase';
+import RecipeBusiness from '../../business/recipebusiness/RecipeBusiness';
 
 
-export default class AccountDataController extends DataBase{
+export default class RecipeController extends DataBase{
 
-	async getAccountData (req: Request, resp: Response){
+	async createRecipe (req: Request, resp: Response){
 		try {
-			const accountData = await new AccountDataBusiness().getAccountData(req);
+			await new RecipeBusiness().createNewRecipe(req);
 
 			resp.statusCode = 201;
-			resp.send({data: accountData});
+			resp.send({ message: 'recipe succesfull created!'});
 		} catch(error: any){
-			console.log('error in AccountDataController:', error?.message);
+			console.log('error in RecipeController:', error?.message);
 
 			const errorMessage = new ErrorMessages().getErrorMessage(error?.message);
 
