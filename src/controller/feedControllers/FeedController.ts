@@ -1,25 +1,25 @@
 import { Request, Response } from 'express';
-import SignInBusiness from '../../business/userBusiness/SignInBusiness';
 import ErrorMessages from '../errorsControllers/MessageErrorsController';
 import DataBase from '../../services/DataBase';
+import FeedBusiness from '../../business/feedBusiness/FeedBusiness';
 
 
-export default class SignInController extends DataBase{
+export default class FeedController extends DataBase {
 
-	async loginToServer (req: Request, resp: Response){
+	async getFeedData (req: Request, resp: Response) {
 		try {
-			const tokenRequest = await new SignInBusiness().loginRequest(req);
+			const feedData = await new FeedBusiness().requestFeedData(req);
 
 			resp.statusCode = 201;
-			resp.send({ token: tokenRequest});
-		} catch(error: any){
-			console.log('error in SignInController:', error?.message);
+			resp.send({data: feedData});
+		} catch(error: any) {
+			console.log('error in FeedController:', error?.message);
 
 			const errorMessage = new ErrorMessages().getErrorMessage(error?.message);
 
 			resp.statusCode = errorMessage.status ?  errorMessage.status : 500;
 			resp.send({message: errorMessage.message});
-		} finally{
+		} finally {
 			this.closeConnection();
 		}
 		return;

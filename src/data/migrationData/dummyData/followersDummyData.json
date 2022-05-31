@@ -1,0 +1,32 @@
+[
+	{
+		"follower_table_id" : "1d46b963-94de-4cff-9bd2-b6dd7d4b74e5",
+		"follower_id" : "16912c3b-a3a6-4b84-86a7-5156705e51b7",
+		"followed_id" : "7febaf7f-272c-4949-a985-e1b1c6bb7a33"
+	},
+	{
+		"follower_table_id" : "333069b8-df30-449a-9bd9-58420fc874dc",
+		"follower_id" : "16912c3b-a3a6-4b84-86a7-5156705e51b7",
+		"followed_id" : "f49c3e4d-4af0-4519-84f4-2304d1723c72"
+	},
+	{
+		"follower_table_id" : "4ebdc6c3-6750-4395-b5a3-da42baceffc5",
+		"follower_id" : "16912c3b-a3a6-4b84-86a7-5156705e51b7",
+		"followed_id" : "0aba2966-ab49-420d-af57-8f64b2485597"
+	},
+	{
+		"follower_table_id" : "77b7e032-00e6-47b5-a6ba-588efd47223d",
+		"follower_id" : "16912c3b-a3a6-4b84-86a7-5156705e51b7",
+		"followed_id" : "5bc0e116-9a3d-46e6-b41b-b5d59ae2d3b5"
+	},
+	{
+		"follower_table_id" : "d95556b3-3844-4d3f-84fb-2397a5da8d1b",
+		"follower_id" : "16912c3b-a3a6-4b84-86a7-5156705e51b7",
+		"followed_id" : "ad7aad79-fead-4363-9e40-ffc2ea8af73a"
+	},
+	{
+		"follower_table_id" : "e4a2976c-eb8a-46ed-b6fc-d829007e92dd",
+		"follower_id" : "16912c3b-a3a6-4b84-86a7-5156705e51b7",
+		"followed_id" : "fda9d632-bbab-4737-b015-cd1d6ec5692a"
+	}
+]

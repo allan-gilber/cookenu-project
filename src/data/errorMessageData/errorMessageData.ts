@@ -1,6 +1,6 @@
 import { errorMessage } from '../../model/User';
 
-const errorMessagesData: {[key: string]: errorMessage} = {
+export const errorMessagesData: {[key: string]: errorMessage} = {
 	genericError: {status: 500, message:'oops, something went wrong!'},
 	emptyParamtersForSignup: {status: 400,message:'please, provide a valid name, email, password and role.'},
 	passwordMinimumLength: {status: 400, message:'please, you password must be atleast 6 or more characters.'},
@@ -12,7 +12,5 @@ const errorMessagesData: {[key: string]: errorMessage} = {
 	invalidToken: {status: 400, message: 'this endpoint requires a valid authorization header.'},
 	invalidParamtersForRecipeCreation: {status: 400, message: 'please, provide a valid title and description of the recipe.'},
 	userIsAlreadyBeeingFollowed: {status: 400, message: 'user is already beeing followed!'},
-	youCantFollowYourself: {status: 400, message: 'one doesn\'t simply follow itself.'}
+	youCantFollowYourself: {status: 400, message: 'one doesn\'t simply follow itself.'},
 };
-
-export default errorMessagesData;

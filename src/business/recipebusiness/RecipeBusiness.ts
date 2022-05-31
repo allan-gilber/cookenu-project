@@ -10,11 +10,11 @@ export default class RecipeBusiness{
 		const token = req.headers.authorization;
 		const { recipeTitle, recipeDescription } = req.body;
 
-		if(!token) throw new Error('invalidToken');
+		
 
 		const tokenData = new Authenticator().validateToken(token);
 
-		if(!tokenData?.userId) throw new Error('invalidToken');
+		
 		if(!recipeTitle || !recipeDescription) throw 'invalidParamtersForRecipeCreation';
 
 		const recipeId = new IdGenerator().generateId();

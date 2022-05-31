@@ -10,7 +10,7 @@ export default class PopulationBusiness {
 	public async populateRecipesTable (){
 		return await new RecipesTableData().populateRecipesTable();
 	}
-	// public async populateFollowersTable (){
-	// 	return await new FollowersTableData().populateFollowersTable();
-	// }
+	public async populateFollowersTable (){
+		return await new FollowersTableData().populateFollowersTable();
+	}
 }
