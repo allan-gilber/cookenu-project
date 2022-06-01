@@ -13,4 +13,5 @@ export const errorMessagesData: {[key: string]: errorMessage} = {
 	invalidParamtersForRecipeCreation: {status: 400, message: 'please, provide a valid title and description of the recipe.'},
 	userIsAlreadyBeeingFollowed: {status: 400, message: 'user is already beeing followed!'},
 	youCantFollowYourself: {status: 400, message: 'one doesn\'t simply follow itself.'},
+	youCantUnfollowYourself: {status: 400, message: 'you run from yourself!'}
 };
