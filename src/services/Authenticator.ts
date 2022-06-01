@@ -28,4 +28,14 @@ export default class Authenticator {
 			throw new Error('invalidToken');
 		}
 	};
+
+	verifySecretPassword = (secretPassword: string): void => {
+		config();
+		if(!process.env.SECRET_PASS){
+			console.log('Please, configure the secret password for "admin" role creation');
+			throw new Error('genericError');
+		}
+		if(!(secretPassword === process.env.SECRET_PASS)) throw new Error('emptyParamtersForSignup');
+		return;
+	};
 }

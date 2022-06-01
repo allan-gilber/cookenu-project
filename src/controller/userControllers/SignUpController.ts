@@ -18,8 +18,6 @@ export default class SignUpController extends DataBase{
 			console.log('error in SignUpController:', error?.message);
 			const errorMessage = new ErrorMessages().getErrorMessage(error?.message);
 
-
-
 			resp.send({message: errorMessage.message});
 		} finally{
 			this.closeConnection();
