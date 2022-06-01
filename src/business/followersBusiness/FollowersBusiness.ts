@@ -32,7 +32,7 @@ export default class FollowersBusiness {
 		if(!userToBeUnfollowedId) throw new Error('invalidUserIdToBeUnfollowed');
 
 		const tokenData = new Authenticator().validateToken(token);
-		
+
 		if(tokenData.userId === userToBeUnfollowedId) throw new Error('youCantUnfollowYourself');
 
 		const checkIfUserExists = new UserData().checkUserIdOnDatabase(userToBeUnfollowedId);

@@ -7,7 +7,6 @@ export default class FollowersData extends DataBase {
 			follower_id: followerId,
 			followed_id: followedId
 		}).then((response) => {
-			console.log('111', response);
 			return response[0].followerd_id;
 		});
 	}
