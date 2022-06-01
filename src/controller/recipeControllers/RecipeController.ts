@@ -35,4 +35,19 @@ export default class RecipeController extends DataBase{
 		}
 		return;
 	}
+
+	async deleteRecipe (req: Request, resp: Response) {
+		try {
+			await new RecipeBusiness().deleteRecipe(req);
+			resp.statusCode = 201;
+			resp.send({ message: 'recipe successfully deleted!'});
+		} catch(error: any) {
+			console.log('error in FollowersController:', error?.message);
+			const errorMessage = new ErrorMessages().getErrorMessage(error?.message);
+			resp.send({message: errorMessage.message});
+		} finally{
+			this.closeConnection();
+		}
+		return;
+	}
 }

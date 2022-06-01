@@ -1,4 +1,3 @@
-import { recipeCreatorId, recipeId } from '../model/Recipes';
 import DataBase from '../services/DataBase';
 
 export default class RecipeData extends DataBase {	
@@ -12,8 +11,8 @@ export default class RecipeData extends DataBase {
 		});
 	}
 
-	async checkRecipeOwnership(recipeId: string, userRequestId: string): Promise<recipeId>{
-		return await this.connection().table('recipes').select('recipe_id').where({'recipe_creator_id': userRequestId, 'recipe_id': recipeId}).then((result) => result[0]?.recipe_id );
+	async checkRecipeOwnership(recipeId: string, userRequestId: string): Promise<any>{
+		return await this.connection().table('recipes').select('recipe_id').where({'recipe_creator_id': userRequestId, 'recipe_id': recipeId});
 	}
 
 	async editRecipeData(recipeId: string, recipeTitle: string, recipeDescription: string, recipeLastEditDate: Date): Promise<any>{
@@ -26,5 +25,9 @@ export default class RecipeData extends DataBase {
 			}
 			await transaction.table('recipes').update({recipe_last_edit_date: recipeLastEditDate}).where({recipe_id: recipeId});
 		});
+	}
+
+	async deleteRecipeData(recipeId: string): Promise<any>{
+		return await this.connection().table('recipes').where({recipe_id: recipeId}).del();
 	}
 }
