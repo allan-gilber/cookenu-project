@@ -8,7 +8,7 @@ export interface userId {
 }
 
 export interface userRole extends userId {
-	userRole: USER_ROLES[]
+	userRole: USER_ROLES.ADMIN | USER_ROLES.USER
 }
 export interface userCredentials extends userId {
 	userEmail: string,

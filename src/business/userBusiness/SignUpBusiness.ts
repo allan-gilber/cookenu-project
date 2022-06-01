@@ -12,7 +12,6 @@ export default class SignUpBusiness{
 		if(!userName || !userEmail || !userPassword || !userRole) throw new Error('emptyParamtersForSignup');
 		if(userPassword.length < 6) throw new Error('passwordMinimumLength');
 		if(!['USER', 'ADMIN'].includes(userRole)) throw new Error('invalidRole');
-		console.log('33333333',userRole, userRole === 'ADMIN');
 		if(userRole === 'ADMIN') new Authenticator().verifySecretPassword(secretPassword);
 
 		await new UserData().checkUserEmailOnDatabase(userEmail);
