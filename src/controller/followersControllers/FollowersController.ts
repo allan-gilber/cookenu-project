@@ -19,6 +19,7 @@ export default class FollowersController extends DataBase{
 		}
 		return;
 	}
+
 	async unfollowUser (req: Request, resp: Response) {
 		try{
 			const unfollowedUser = await new FollowersBusiness().unfollowUser(req);

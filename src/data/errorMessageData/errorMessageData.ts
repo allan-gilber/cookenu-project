@@ -9,6 +9,8 @@ export const errorMessagesData: {[key: string]: errorMessage} = {
 	emailAlreadyInUse: {status: 400, message:'the email provided is already in use.'},
 	signUpsuccessful: {status: 201, message: 'user successful created!'},
 	invalidUserId: {status: 400, message: 'invalid userId'},
+	invalidUserIdToBeFollowed: {status: 400, message: 'invalid userId to be followed!'},
+	invalidUserIdToBeUnfollowed: {status: 400, message: 'invalid userId to be unfollowed!'},
 	invalidToken: {status: 400, message: 'this endpoint requires a valid authorization header.'},
 	invalidParamtersForRecipeCreation: {status: 400, message: 'please, provide a valid title and description of the recipe.'},
 	userIsAlreadyBeeingFollowed: {status: 400, message: 'user is already beeing followed!'},
