@@ -8,7 +8,6 @@ export default class FeedData extends DataBase {
 			.where('followers.follower_id', '=', userId)
 			.innerJoin('recipes', 'recipes.recipe_creator_id', 'followers.followed_id').orderBy('recipes.recipe_creation_date', 'desc')
 			.then((response): any => {
-				console.log('resposta', response);
 				if(!response) return []; 
 				return response;
 			});

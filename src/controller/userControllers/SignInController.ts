@@ -17,7 +17,7 @@ export default class SignInController extends DataBase{
 
 			const errorMessage = new ErrorMessages().getErrorMessage(error?.message);
 
-			resp.statusCode = errorMessage.status ?  errorMessage.status : 500;
+
 			resp.send({message: errorMessage.message});
 		} finally{
 			this.closeConnection();
