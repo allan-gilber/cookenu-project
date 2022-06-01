@@ -15,6 +15,7 @@ export const errorMessagesData: {[key: string]: errorMessage} = {
 	invalidUserIdToBeFollowed: {status: 400, message: 'invalid userId to be followed!'},
 	invalidUserIdToBeUnfollowed: {status: 400, message: 'invalid userId to be unfollowed!'},
 	invalidToken: {status: 401, message: 'this endpoint requires a valid authorization header.'},
+	invalidRecipeId: {status: 400, message: 'please, provide a valid recipe id.'},
 	// already in use
 	emailAlreadyInUse: {status: 403, message:'the email provided is already in use.'},
 	// impossibility to change or to do

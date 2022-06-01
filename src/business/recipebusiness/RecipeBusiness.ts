@@ -30,10 +30,26 @@ export default class RecipeBusiness{
 
 		const recipeRequest = new RecipeData();
 		if(tokenData.userRole != 'ADMIN') await recipeRequest.checkRecipeOwnership(recipeId, tokenData.userId).then((result) => {
-			if(!result) throw new Error('cantEditTheRecipe');});
+			if(!result[0]?.recipe_id) throw new Error('cantEditTheRecipe');});
 
 		const recipeLastEditionDate = new Date();
 
 		return await recipeRequest.editRecipeData(recipeId, recipeTitle, recipeDescription, recipeLastEditionDate);
+	}
+
+	async deleteRecipe(req: Request) {
+		const token = req.headers.authorization;
+		const { recipeId } = req.body;
+		if(!recipeId) throw new Error('invalidRecipeId');
+
+		const tokenData = new Authenticator().validateToken(token);
+		const recipeRequest = new RecipeData();
+
+		console.log(tokenData.userRole, tokenData.userRole != 'ADMIN');
+		if(tokenData.userRole != 'ADMIN') await recipeRequest.checkRecipeOwnership(recipeId, tokenData.userId).then((result) => {
+			if(!result[0]?.recipe_id) throw new Error('cantEditTheRecipe');
+		});
+
+		return await recipeRequest.deleteRecipeData(recipeId);
 	}
 }

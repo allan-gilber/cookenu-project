@@ -23,4 +23,5 @@ app.post('/recipe/createNewRecipe', (req: Request, resp: Response) => new Recipe
 app.put('/recipe/editRecipe', (req: Request, resp: Response) => new RecipeController().editRecipe(req, resp));
 
 app.delete('/followers/unfollowUser', (req: Request, resp: Response) => new FollowersController().unfollowUser(req, resp));
+app.delete('/recipe/delete', (req: Request, resp: Response) => new RecipeController().deleteRecipe(req, resp));
 
