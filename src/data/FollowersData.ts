@@ -1,13 +1,13 @@
-import { userId } from '../model/User';
+import { followerId } from '../model/Followers';
 import DataBase from '../services/DataBase';
 
 export default class FollowersData extends DataBase {
-	async checkFollowerTableFortIds(followerId: string, followedId: string): Promise<any[] | userId>{
+	async checkFollowerTableFortIds(followerId: string, followedId: string): Promise<followerId>{
 		return await this.connection().table('followers').select('follower_id').where({
 			follower_id: followerId,
 			followed_id: followedId
 		}).then((response) => {
-			return response[0].followerd_id;
+			return response[0]?.follower_id;
 		});
 	}
 

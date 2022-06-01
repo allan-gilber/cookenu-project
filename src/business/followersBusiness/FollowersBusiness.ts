@@ -16,9 +16,8 @@ export default class FollowersBusiness {
 		const checkIfUserExists = new UserData().checkUserIdOnDatabase(userToBeFollowedId);
 		const checkIfUserIsAlreadyFollowed = new FollowersData().checkFollowerTableFortIds(tokenData.userId, userToBeFollowedId);
 
-		return await Promise.all([checkIfUserExists, checkIfUserIsAlreadyFollowed]).then(async ([firstPromisseresult, secondPromisseresultd]) =>{
-			console.log('resp', firstPromisseresult, firstPromisseresult.user_id);
-			if(firstPromisseresult.user_id) throw new Error('userIsAlreadyBeeingFollowed');
+		return await Promise.all([checkIfUserExists, checkIfUserIsAlreadyFollowed]).then(async ([firstPromisseResult, secondPromisseResultd]) =>{
+			if(secondPromisseResultd) throw new Error('userIsAlreadyBeeingFollowed');
 
 			const followerTableId = new IdGenerator().generateId();
 
@@ -38,8 +37,8 @@ export default class FollowersBusiness {
 		const checkIfUserExists = new UserData().checkUserIdOnDatabase(userToBeUnfollowedId);
 		const checkIfUserIsFollowed = new FollowersData().checkFollowerTableFortIds(tokenData.userId, userToBeUnfollowedId);
 
-		return await Promise.all([checkIfUserExists, checkIfUserIsFollowed]).then(async ([firstPromisseresult, secondPromisseresultd]) =>{
-			if(!firstPromisseresult.user_id) throw new Error('userIsNotBeeingFollowed');
+		return await Promise.all([checkIfUserExists, checkIfUserIsFollowed]).then(async ([firstPromisseResult, secondPromisseResultd]) =>{
+			if(!secondPromisseResultd) throw new Error('userIsNotBeeingFollowed');
 
 			return await new FollowersData().deleteFollowingUserData(tokenData.userId, userToBeUnfollowedId);
 		});
