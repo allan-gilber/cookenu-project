@@ -8,7 +8,8 @@ export default class RecipesTableData extends DataBase {
 			table.string('recipe_creator_id').notNullable();
 			table.string('recipe_title').notNullable();
 			table.string('recipe_description').notNullable();
-			table.date('recipe_creation_date').notNullable();
+			table.datetime('recipe_creation_date').notNullable();
+			table.datetime('recipe_last_edit_date');
 			table.foreign('recipe_creator_id').references('user_id').inTable('users');
 		}).then(()=> console.log('Table "recipes" successful created!'));
 	}

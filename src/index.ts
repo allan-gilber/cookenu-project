@@ -20,6 +20,7 @@ app.post('/signUp', (req: Request, resp: Response) => new SignUpController().cre
 app.post('/followers/followUser', (req: Request, resp: Response) => new FollowersController().followUser(req, resp));
 app.post('/recipe/createNewRecipe', (req: Request, resp: Response) => new RecipeController().createRecipe(req, resp));
 
+app.put('/recipe/editRecipe', (req: Request, resp: Response) => new RecipeController().editRecipe(req, resp));
 
 app.delete('/followers/unfollowUser', (req: Request, resp: Response) => new FollowersController().unfollowUser(req, resp));
 

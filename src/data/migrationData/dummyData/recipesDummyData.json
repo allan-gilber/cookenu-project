@@ -1,30 +1,42 @@
 [
 	{
-		"recipe_id": "1b21f7ea-baa9-475a-8ae6-99bdb337a421",
-		"recipe_title": "Mac&Cheese",
-		"recipe_description": "Some pasta and cheese.",
-		"recipe_creation_date": "2022-05-30",
-		"recipe_creator_id": "16912c3b-a3a6-4b84-86a7-5156705e51b7"
+		"recipe_id" : "1b21f7ea-baa9-475a-8ae6-99bdb337a421",
+		"recipe_creator_id" : "16912c3b-a3a6-4b84-86a7-5156705e51b7",
+		"recipe_title" : "A Good App",
+		"recipe_description" : "code some functions and hope for the best.",
+		"recipe_creation_date" : "2022-05-30",
+		"recipe_last_edit_date" : "2022-06-01"
 	},
 	{
-		"recipe_id": "591bec12-1e65-4272-8b8c-b8e16be1b063",
-		"recipe_title": "Lembas",
-		"recipe_description": "Some bread and elf magic. Mix all togheter and BOOM!LEMBAS!",
-		"recipe_creation_date": "2022-05-30",
-		"recipe_creator_id": "5bc0e116-9a3d-46e6-b41b-b5d59ae2d3b5"
+		"recipe_id" : "591bec12-1e65-4272-8b8c-b8e16be1b063",
+		"recipe_creator_id" : "5bc0e116-9a3d-46e6-b41b-b5d59ae2d3b5",
+		"recipe_title" : "Lembas",
+		"recipe_description" : "Some bread and elf magic. Mix all togheter and BOOM!LEMBAS!",
+		"recipe_creation_date" : "2022-05-30",
+		"recipe_last_edit_date" : null
 	},
 	{
-		"recipe_id": "e370fd80-8a28-48c9-afe7-60e605f33017",
-		"recipe_title": "Easy Grilled Pork Chops",
-		"recipe_description": "grilled the pork chops and eat it.",
-		"recipe_creation_date": "2022-07-31",
-		"recipe_creator_id": "5bc0e116-9a3d-46e6-b41b-b5d59ae2d3b5"
+		"recipe_id" : "5bc0e116-9a3d-46e6-b41b-b5d59ae2d3b5",
+		"recipe_creator_id" : "5bc0e116-9a3d-46e6-b41b-b5d59ae2d3b5",
+		"recipe_title" : "Noodles",
+		"recipe_description" : "boil some wather and put the noodles with the sauce.",
+		"recipe_creation_date" : "2022-04-30",
+		"recipe_last_edit_date" : null
 	},
 	{
-		"recipe_id": "5bc0e116-9a3d-46e6-b41b-b5d59ae2d3b5",
-		"recipe_title": "Noodles",
-		"recipe_description": "boil some wather and put the noodles with the sauce.",
-		"recipe_creation_date": "2022-04-30",
-		"recipe_creator_id": "5bc0e116-9a3d-46e6-b41b-b5d59ae2d3b5"
+		"recipe_id" : "60bdb5db-5a15-40c4-b556-c1a420672c6b",
+		"recipe_creator_id" : "400b88d8-44df-4b7d-a545-95de1a694017",
+		"recipe_title" : "French Chips",
+		"recipe_description" : "fry some potato and go to France.",
+		"recipe_creation_date" : "2022-06-01",
+		"recipe_last_edit_date" : null
+	},
+	{
+		"recipe_id" : "e370fd80-8a28-48c9-afe7-60e605f33017",
+		"recipe_creator_id" : "5bc0e116-9a3d-46e6-b41b-b5d59ae2d3b5",
+		"recipe_title" : "Easy Grilled Pork Chops",
+		"recipe_description" : "grilled the pork chops and eat it.",
+		"recipe_creation_date" : "2022-07-31",
+		"recipe_last_edit_date" : null
 	}
 ]

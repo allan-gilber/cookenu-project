@@ -1,25 +1,39 @@
 import { Request } from 'express';
 import RecipeData from '../../data/RecipeData';
-import UserData from '../../data/UserData';
 import Authenticator from '../../services/Authenticator';
 import IdGenerator from '../../services/IdGenerator';
 
 export default class RecipeBusiness{
 
-	async createNewRecipe(req: Request){
+	async createNewRecipeLogic(req: Request){
 		const token = req.headers.authorization;
 		const { recipeTitle, recipeDescription } = req.body;
 
-		
-
 		const tokenData = new Authenticator().validateToken(token);
 
-		
-		if(!recipeTitle || !recipeDescription) throw 'invalidParamtersForRecipeCreation';
+		if(!recipeTitle || !recipeDescription) throw new Error('invalidParamtersForRecipeCreation');
 
 		const recipeId = new IdGenerator().generateId();
 		const recipeCreationDate = new Date();
 
 		return await new RecipeData().insertRecipeData(recipeId, recipeTitle, recipeDescription, recipeCreationDate, tokenData.userId);
+	}
+
+	async editRecipeLogic(req: Request){
+		const token = req.headers.authorization;
+		const { recipeId, recipeTitle, recipeDescription } = req.body;
+
+		const tokenData = new Authenticator().validateToken(token);
+
+		if(!recipeTitle && !recipeDescription || !recipeId) throw new Error('invalidParamtersForRecipeEdit');
+		if((recipeTitle.length < 4 && !recipeTitle) || (recipeDescription < 4 && !recipeDescription)) throw new Error('postEditMinimumLength');
+
+		const recipeRequest = new RecipeData();
+		if(tokenData.userRole != 'ADMIN') await recipeRequest.checkRecipeOwnership(recipeId, tokenData.userId).then((result) => {
+			if(!result) throw new Error('cantEditTheRecipe');});
+
+		const recipeLastEditionDate = new Date();
+
+		return await recipeRequest.editRecipeData(recipeId, recipeTitle, recipeDescription, recipeLastEditionDate);
 	}
 }
