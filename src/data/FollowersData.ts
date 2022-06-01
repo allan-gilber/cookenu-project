@@ -1,12 +1,10 @@
 import DataBase from '../services/DataBase';
 
 export default class FollowersData extends DataBase {
-	async checkIfUserIsAlreadyAFollower(followerId: string, followedId: string): Promise<any>{
+	async checkFollowerTableFortIds(followerId: string, followedId: string): Promise<any[]>{
 		return await this.connection().table('followers').select('follower_id').where({
 			follower_id: followerId,
 			followed_id: followedId
-		}).then((response) =>{
-			if(response[0]) throw new Error('userIsAlreadyBeeingFollowed');
 		});
 	}
 

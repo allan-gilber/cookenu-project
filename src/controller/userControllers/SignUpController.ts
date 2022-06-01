@@ -18,7 +18,7 @@ export default class SignUpController extends DataBase{
 			console.log('error in SignUpController:', error?.message);
 			const errorMessage = new ErrorMessages().getErrorMessage(error?.message);
 
-			resp.statusCode = errorMessage.status ?  errorMessage.status : 500;
+
 
 			resp.send({message: errorMessage.message});
 		} finally{
