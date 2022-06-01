@@ -24,6 +24,8 @@ export const errorMessagesData: {[key: string]: errorMessage} = {
 	youCantFollowYourself: {status: 403, message: 'one doesn\'t simply follow itself.'},
 	youCantUnfollowYourself: {status: 403, message: 'you run from yourself!'},
 	cantEditTheRecipe: {status: 401, message: 'you don\'t have authorization to edit the post.' },
+	unauthorized: {status: 401, message: 'you don\'t have authorization.' },
+	unableToSelfDestruct: {status: 400, message: 'you can\'t delete your own account.'},
 	// successful
-	signUpsuccessful: {status: 201, message: 'user successful created!'},
+	signUpsuccessful: {status: 201, message: 'user successful created!'}
 };

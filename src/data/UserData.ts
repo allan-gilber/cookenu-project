@@ -41,4 +41,15 @@ export default class UserData extends DataBase {
 				return response[0];
 			});
 	}
+
+	async requestDeleteAccountData(userId: string) {
+		console.log('dell');
+		return await this.connection().transaction(async (transaction) =>{
+			await transaction.table('followers').where({follower_id: userId}).orWhere({followed_id: userId}).del();
+
+			await transaction.table('recipes').where({recipe_creator_id: userId}).del();
+
+			await transaction.table('users').where({user_id: userId}).del();
+		});
+	}
 }

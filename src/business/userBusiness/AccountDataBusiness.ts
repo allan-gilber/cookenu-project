@@ -20,4 +20,17 @@ export default class AccountDataBusiness{
 
 		return await new UserData().requestNonSensitiveData(userId);
 	}
+
+	async deleteAccount (req: Request) {
+		const token = req.headers.authorization;
+		const {userId} = req.body;
+
+		const tokenData = new Authenticator().validateToken(token);
+		console.log(tokenData.userRole, tokenData.userRole != 'ADMIN', tokenData.userRole === userId);
+		if(tokenData.userRole != 'ADMIN') throw new Error('unauthorized');
+		if(tokenData.userRole === userId) throw new Error('unableToSelfDestruct');
+		const userData = new UserData();
+
+		return await userData.checkUserIdOnDatabase(userId).then(() => userData.requestDeleteAccountData(userId));
+	}
 }
