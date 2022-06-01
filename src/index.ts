@@ -10,8 +10,9 @@ import UserController from './controller/userControllers/UserController';
 
 app.get('/signin', (req: Request, resp: Response) => new UserController().loginToServer(req, resp));
 app.get('/user/profile', (req: Request, resp: Response) => new UserController().accountData(req, resp));
-app.get('/user/:userId/', (req: Request, resp: Response) => new UserController().accountDataFromOtherUser(req, resp));
 app.get('/feed/user-feed', (req: Request, resp: Response) => new FeedController().getFeedData(req, resp));
+app.get('/user/password-recover', (req: Request, resp: Response) => new UserController().userPasswordReset(req, resp));
+app.get('/user/:userId/', (req: Request, resp: Response) => new UserController().accountDataFromOtherUser(req, resp));
 
 
 app.post('/signup', (req: Request, resp: Response) => new UserController().createNewUser(req, resp));
@@ -23,4 +24,3 @@ app.put('/recipe/edit-recipe', (req: Request, resp: Response) => new RecipeContr
 app.delete('/followers/unfollow-user', (req: Request, resp: Response) => new FollowersController().unfollowUser(req, resp));
 app.delete('/recipe/delete', (req: Request, resp: Response) => new RecipeController().deleteRecipe(req, resp));
 app.delete('/user/account-delete', (req: Request, resp: Response) => new UserController().deleteAccount(req, resp));
-

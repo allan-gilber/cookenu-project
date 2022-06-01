@@ -1,4 +1,4 @@
-import { userId, userRole } from '../model/User';
+import { userRole } from '../model/User';
 import { config } from 'dotenv';
 import { JwtPayload, Secret, sign, verify } from 'jsonwebtoken';
 

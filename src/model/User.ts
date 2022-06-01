@@ -7,7 +7,10 @@ export interface userId {
 	userId: string,
 }
 
-export interface userRole extends userId {
+export interface userName {
+	userName?: string
+}
+export interface userRole extends userId, userName {
 	userRole: USER_ROLES.ADMIN | USER_ROLES.USER
 }
 export interface userCredentials extends userId {

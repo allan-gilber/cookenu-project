@@ -13,9 +13,7 @@ export default class UserData extends DataBase {
 	}
 
 	async checkUserEmailOnDatabase(userEmail: string){
-		return await this.connection().table('users').select('user_email').where('user_email', '=', userEmail)
-			.then((response) => { 
-				if(response[0]?.user_email) throw new Error('emailAlreadyInUse'); });
+		return await this.connection().table('users').select('user_email', 'user_name').where('user_email', '=', userEmail);
 	}
 
 	async checkUserIdOnDatabase(userId: string){
@@ -46,9 +44,7 @@ export default class UserData extends DataBase {
 		console.log('dell');
 		return await this.connection().transaction(async (transaction) =>{
 			await transaction.table('followers').where({follower_id: userId}).orWhere({followed_id: userId}).del();
-
 			await transaction.table('recipes').where({recipe_creator_id: userId}).del();
-
 			await transaction.table('users').where({user_id: userId}).del();
 		});
 	}
