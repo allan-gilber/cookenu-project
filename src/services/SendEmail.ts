@@ -30,8 +30,9 @@ export default class NodeMailer {
 
 	async sendEmail(recepientEmail: string, hashCode: string) {
 		dotenv.config();
+		console.log('33', process.env.NODEMAILER_USER, recepientEmail);
 		const mail = {
-			from: `<${process.env.NODEMAILER_USER}>`,
+			from: process.env.NODEMAILER_USER,
 			to: recepientEmail,
 			subject: this.subject,
 			template: 'email',
@@ -41,6 +42,6 @@ export default class NodeMailer {
 			}
 		};
 		await this.mailTransporter().sendMail(mail)
-			.then(result => console.log(result.accepted));
+			.then(result => console.log(result));
 	}
 }

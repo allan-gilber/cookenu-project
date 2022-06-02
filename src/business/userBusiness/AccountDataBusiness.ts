@@ -79,6 +79,7 @@ export default class AccountDataBusiness{
 
 		return await userData.checkUserEmailOnDatabase(userEmail)
 			.then((response) => {
+				console.log('ttt',response);
 				if(!response[0].user_name) return;
 				nameOfTheUser = response[0]?.user_name;
 
