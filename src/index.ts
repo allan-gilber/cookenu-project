@@ -7,7 +7,7 @@ import RecipeController from './controller/recipeControllers/RecipeController';
 import UserController from './controller/userControllers/UserController';
 
 
-
+console.log()
 app.get('/signin', (req: Request, resp: Response) => new UserController().loginToServer(req, resp));
 app.get('/user/profile', (req: Request, resp: Response) => new UserController().accountData(req, resp));
 app.get('/feed/user-feed', (req: Request, resp: Response) => new FeedController().getFeedData(req, resp));
