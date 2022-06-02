@@ -103,8 +103,25 @@ export default class UserController extends DataBase {
 			resp.statusCode = 201;
 			resp.send({message: 'if theres a account with the email provided, a recovery link will be sent to your email.' });
 		} catch(error: any) {
-			console.log('ttt', error);
-			// console.log('error in UserController:', error?.message);
+			console.log('error in UserController:', error?.message);
+			const errorMessage = new ErrorMessages().getErrorMessage(error?.message);
+			resp.statusCode = errorMessage.status;
+
+			resp.send({message: errorMessage.message});
+		} finally {
+			this.closeConnection();
+		}
+		return;
+	}
+
+	async newPassword(req: Request, resp: Response) {
+		try{
+			await new AccountDataBusiness().recoverPasswordLogic(req);
+			console.log('finished');
+			resp.statusCode = 201;
+			resp.send({message: 'if theres a account with the email provided, a recovery link will be sent to your email.' });
+		} catch(error: any) {
+			console.log('error in UserController:', error?.message);
 			const errorMessage = new ErrorMessages().getErrorMessage(error?.message);
 			resp.statusCode = errorMessage.status;
 

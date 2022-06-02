@@ -13,7 +13,8 @@ export default class NodeMailer {
 
 	mailTransporter() {
 		return nodemailer.createTransport({
-			service: 'Hotmail',
+			host: 'smtp.ethereal.email',
+			port: 587,
 			auth: {
 				user: process.env.NODEMAILER_USER,
 				pass: process.env.NODEMAILER_PASS
