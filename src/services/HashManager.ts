@@ -1,15 +1,15 @@
-import { compareSync, genSaltSync, hashSync } from 'bcryptjs';
+import { compareSync, genSaltSync, hash } from 'bcryptjs';
 
 export default class HashManager{
-	createHash = (plaintText: string) =>{
+	async createHash(plaintText: string){
 		const salt = genSaltSync(12);
 
-		const cypherText = hashSync(plaintText, salt);
+		const cypherText = await hash(plaintText, salt);
 
 		return cypherText;
-	};
+	}
 
-	compareHashs = (plaintText: string, cypherText: string) => {
+	async compareHashs(plaintText: string, cypherText: string){
 		return compareSync(plaintText, cypherText);
-	};
+	}
 }

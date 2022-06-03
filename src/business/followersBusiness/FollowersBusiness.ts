@@ -10,7 +10,7 @@ export default class FollowersBusiness {
 		const { userToBeFollowedId } = req.body;
 		if(!userToBeFollowedId) throw new Error('invalidUserIdToBeFollowed');
 
-		const tokenData = new Authenticator().validateToken(token);
+		const tokenData = await new Authenticator().validateToken(token);
 		if(tokenData.userId === userToBeFollowedId) throw new Error('youCantFollowYourself');
 
 		const checkIfUserExists = new UserData().checkUserIdOnDatabase(userToBeFollowedId);
@@ -30,7 +30,7 @@ export default class FollowersBusiness {
 		const { userToBeUnfollowedId } = req.body;
 		if(!userToBeUnfollowedId) throw new Error('invalidUserIdToBeUnfollowed');
 
-		const tokenData = new Authenticator().validateToken(token);
+		const tokenData = await new Authenticator().validateToken(token);
 
 		if(tokenData.userId === userToBeUnfollowedId) throw new Error('youCantUnfollowYourself');
 

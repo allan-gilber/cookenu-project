@@ -9,7 +9,7 @@ export default class RecipeBusiness{
 		const token = req.headers.authorization;
 		const { recipeTitle, recipeDescription } = req.body;
 
-		const tokenData = new Authenticator().validateToken(token);
+		const tokenData = await new Authenticator().validateToken(token);
 
 		if(!recipeTitle || !recipeDescription) throw new Error('invalidParamtersForRecipeCreation');
 
@@ -23,13 +23,13 @@ export default class RecipeBusiness{
 		const token = req.headers.authorization;
 		const { recipeId, recipeTitle, recipeDescription } = req.body;
 
-		const tokenData = new Authenticator().validateToken(token);
+		const tokenData = await new Authenticator().validateToken(token);
 
 		if(!recipeTitle && !recipeDescription || !recipeId) throw new Error('invalidParamtersForRecipeEdit');
 		if((recipeTitle.length < 4 && !recipeTitle) || (recipeDescription < 4 && !recipeDescription)) throw new Error('postEditMinimumLength');
 
 		const recipeRequest = new RecipeData();
-		if(tokenData.userRole != 'ADMIN') await recipeRequest.checkRecipeOwnership(recipeId, tokenData.userId).then((result) => {
+		if(tokenData.userRole !== 'ADMIN') await recipeRequest.checkRecipeOwnership(recipeId, tokenData.userId).then((result) => {
 			if(!result[0]?.recipe_id) throw new Error('cantEditTheRecipe');});
 
 		const recipeLastEditionDate = new Date();
@@ -42,11 +42,10 @@ export default class RecipeBusiness{
 		const { recipeId } = req.body;
 		if(!recipeId) throw new Error('invalidRecipeId');
 
-		const tokenData = new Authenticator().validateToken(token);
+		const tokenData = await new Authenticator().validateToken(token);
 		const recipeRequest = new RecipeData();
 
-		console.log(tokenData.userRole, tokenData.userRole != 'ADMIN');
-		if(tokenData.userRole != 'ADMIN') await recipeRequest.checkRecipeOwnership(recipeId, tokenData.userId).then((result) => {
+		if(tokenData.userRole as unknown !== 'ADMIN') await recipeRequest.checkRecipeOwnership(recipeId, tokenData.userId).then((result) => {
 			if(!result[0]?.recipe_id) throw new Error('cantEditTheRecipe');
 		});
 

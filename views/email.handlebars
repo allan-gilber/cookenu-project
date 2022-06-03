@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <style>
+        body {
+            font: normal 13px/18px 'YahooSans', 'Helvetica''Neue', 'Segoe UI', 'Helvetica', 'Arial', 'Lucida Grande', 'sans-serif';
+            line-height: 150%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        body>div {
+            width: 40%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: left;
+        }
+
+        body>div>p {
+            width: 100%;
+            min-width: 370px;
+            text-align: justify;
+            text-align-last: left;
+            display: block;
+        }
+
+        body>div>span {
+            height: 10%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        body>div>span>a {
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            max-width: 400px;
+            justify-content: center;
+            padding: 0.4rem;
+            border-radius: 5px;
+            background-color: #f05841;
+            color: #ffffff
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <p>
+            Hello, {{this.name}}.</p>
+        <p>
+            We have received a request to the password of the account associated with this email.
+        </p>
+        <p>
+            If you really did do this request, please click on the buttom bellow to finalize your password reset.
+        </p>
+        <p>
+            If you didn't request that, you can just ignore this email.
+        </p>
+        <p>
+            Att.
+        </p>
+        <p>
+            Web Developer
+        </p>
+        <span>
+            <a rel="nofollow noopener noreferrer" title="" target="_blank"
+                href="http://localhost:3003/user/password-recover/resetpassword/{{hashCode}}">
+                Reset Password
+            </a>
+        </span>
+    </div>
+</body>
+
+</html>
