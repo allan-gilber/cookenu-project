@@ -1,10 +1,10 @@
-import { errorMessage } from '../../model/User';
+import { errorMessage } from '../../model/Users';
 
 export const errorMessagesData: {[key: string]: errorMessage} = {
 	genericError: {status: 500, message:'oops, something went wrong!'},
 	// empty/incomplete
 	emptyParamtersForSignup: {status: 400,message:'please, provide a valid name, email, password and role.'},
-	passwordMinimumLength: {status: 400, message:'please, you password must be atleast 6 or more characters.'},
+	passwordMinimumLength: {status: 400, message:'please, you password must be at least 6 or more characters.'},
 	postEditMinimumLength: {status: 400, message:'please, the paramters for title and/or description must contain at least 3 characters.'},
 	// invalid
 	invalidRole: {status: 400, message:'please, provide a valid role for your account.'},
@@ -14,7 +14,7 @@ export const errorMessagesData: {[key: string]: errorMessage} = {
 	invalidUserId: {status: 400, message: 'invalid userId'},
 	invalidUserIdToBeFollowed: {status: 400, message: 'invalid userId to be followed!'},
 	invalidUserIdToBeUnfollowed: {status: 400, message: 'invalid userId to be unfollowed!'},
-	invalidToken: {status: 401, message: 'this endpoint requires a valid authorization header.'},
+	invalidToken: {status: 401, message: 'this endpoint requires a valid authorization.'},
 	invalidRecipeId: {status: 400, message: 'please, provide a valid recipe id.'},
 	emptyParamterForPasswordRecovery: {status: 400, message:'please, provide a valid email for password recovery.'},
 	// already in use

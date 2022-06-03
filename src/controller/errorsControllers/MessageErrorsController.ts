@@ -1,5 +1,5 @@
 import errorMessageBusiness from '../../business/errorBusiness/errorMessageBusiness';
-import { errorMessage } from '../../model/User';
+import { errorMessage } from '../../model/Users';
 
 export default class MessageErrorsController {
 	getErrorMessage(errorCode: string): errorMessage {

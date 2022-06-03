@@ -3,7 +3,7 @@ import UserData from '../../data/UserData';
 import Authenticator from '../../services/Authenticator';
 import HashManager from '../../services/HashManager';
 import IdGenerator from '../../services/IdGenerator';
-import NodeMailer from '../../services/SendEmail';
+import NodeMailer from '../../services/NodeMailer';
 
 export default class AccountDataBusiness{
 
@@ -19,7 +19,7 @@ export default class AccountDataBusiness{
 
 
 		const userId = new IdGenerator().generateId();
-		const passwordHash = new HashManager().createHash(userPassword);
+		const passwordHash = await new HashManager().createHash(userPassword);
 
 		await new UserData().insertUserData(userId, userName, userEmail, passwordHash, userRole);
 	}
@@ -31,19 +31,20 @@ export default class AccountDataBusiness{
 		if(userPassword.length < 6) throw new Error('invalidParamtersForSignIn');
 
 		const userData = await new UserData().requestUserDataForLogin(userEmail);
-		const passwordHash = new HashManager().compareHashs(userPassword, userData.user_password);  
+		const passwordTest = await new HashManager().compareHashs(userPassword, userData.user_password);
 
-		if(!passwordHash) throw new Error('invalidParamtersForSignIn');
+		return Promise.all([userData, passwordTest]).then(([userDataResult, passwordTestresult])=>{
+			if(!passwordTestresult) throw new Error('invalidParamtersForSignIn');
 
-		return new Authenticator().generateNewToken({userId: userData.user_id, userRole: userData.user_role});
+			return new Authenticator().generateNewToken({userId: userDataResult.userId, userRole: userDataResult.userRole, userEmail: userDataResult.user_email});});
 	}
 
 	async getAccountData (req: Request) {
 		const token = req.headers.authorization;
 
-		const tokenData = new Authenticator().validateToken(token);
+		const tokenData = await new Authenticator().validateToken(token);
 
-		return await new UserData().requestNonSensitiveData(tokenData.userId as string);
+		return await new UserData().requestNonSensitiveData(tokenData.userId);
 	}
 
 	async getAccountDataFromOtherUser (req: Request) {
@@ -59,9 +60,8 @@ export default class AccountDataBusiness{
 		const token = req.headers.authorization;
 		const {userId} = req.body;
 
-		const tokenData = new Authenticator().validateToken(token);
-		console.log(tokenData.userRole, tokenData.userRole != 'ADMIN', tokenData.userRole === userId);
-		if(tokenData.userRole != 'ADMIN') throw new Error('unauthorized');
+		const tokenData = await new Authenticator().validateToken(token);
+		if(tokenData.userRole as unknown !== 'ADMIN') throw new Error('unauthorized');
 		if(tokenData.userRole === userId) throw new Error('unableToSelfDestruct');
 		const userData = new UserData();
 
@@ -69,21 +69,33 @@ export default class AccountDataBusiness{
 	}
 
 	async recoverPasswordLogic (req: Request) {
-
+		('444');
 		const {userEmail} = req.body;
-		let nameOfTheUser: string;
-
 		if(!userEmail) throw new Error('emptyParamterForPasswordRecovery');
 
-		const userData = new UserData();
+		const accountData = await new UserData().checkUserEmailOnDatabase(userEmail);
 
-		return await userData.checkUserEmailOnDatabase(userEmail)
-			.then((response) => {
-				if(!response[0].user_name) return;
-				nameOfTheUser = response[0]?.user_name;
+		if(!accountData.user_name) return;
+		
+		const nameOfTheUser: string = accountData.user_name;
 
-				return new Authenticator().generateNewToken({userId: response[0].user_name, userRole: response[0].user_email})
-					.then((hash) => new NodeMailer(nameOfTheUser).sendEmail(userEmail, hash));
-			});
+		return await new Authenticator().generateNewToken({userId: accountData.user_id, userRole: accountData.user_role, userEmail: accountData.user_email})
+			.then((hash) => new NodeMailer(nameOfTheUser).sendEmail(userEmail, hash));
+	}
+
+	async setNewPasswordLogic (req: Request) {
+
+		const {hashToken} = req.params;
+		const {newPassword} = req.body;
+
+		if(!hashToken) throw new Error('invalidToken');
+		if(newPassword === undefined || newPassword?.length < 6) throw new Error('passwordMinimumLength');
+
+		const token = await new Authenticator().validateToken(hashToken);
+		const hashPassword = new HashManager().createHash(newPassword);
+
+		return Promise.all([token, hashPassword]).then(([tokenData, hashData]) =>{
+			return new UserData().requestPasswordEdit(hashData, tokenData.userEmail);}
+		);
 	}
 }

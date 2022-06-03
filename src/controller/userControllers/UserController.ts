@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import AccountDataBusiness from '../../business/userBusiness/AccountDataBusiness';
+import AccountDataBusiness from '../../business/userBusiness/UserAccountBusiness';
 import ErrorMessages from '../errorsControllers/MessageErrorsController';
 import DataBase from '../../services/DataBase';
 
@@ -81,7 +81,7 @@ export default class UserController extends DataBase {
 	async deleteAccount (req: Request, resp: Response) {
 		try {
 			const accountData = await new AccountDataBusiness().deleteAccount(req);
-			console.log('finished');
+
 			resp.statusCode = 201;
 			resp.send({data: accountData});
 		} catch(error: any) {
@@ -99,7 +99,7 @@ export default class UserController extends DataBase {
 	async userPasswordReset(req: Request, resp: Response) {
 		try{
 			await new AccountDataBusiness().recoverPasswordLogic(req);
-			console.log('finished');
+
 			resp.statusCode = 201;
 			resp.send({message: 'if theres a account with the email provided, a recovery link will be sent to your email.' });
 		} catch(error: any) {
@@ -114,12 +114,12 @@ export default class UserController extends DataBase {
 		return;
 	}
 
-	async newPassword(req: Request, resp: Response) {
+	async newUserPassword(req: Request, resp: Response) {
 		try{
-			await new AccountDataBusiness().recoverPasswordLogic(req);
-			console.log('finished');
+			await new AccountDataBusiness().setNewPasswordLogic(req);
+
 			resp.statusCode = 201;
-			resp.send({message: 'if theres a account with the email provided, a recovery link will be sent to your email.' });
+			resp.send({message: 'Password successfully changed!' });
 		} catch(error: any) {
 			console.log('error in UserController:', error?.message);
 			const errorMessage = new ErrorMessages().getErrorMessage(error?.message);

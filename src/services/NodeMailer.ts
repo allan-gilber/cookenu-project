@@ -1,20 +1,21 @@
 import nodemailer from 'nodemailer';
-import dotenv from 'dotenv';
+import {config} from 'dotenv';
 import path from 'path';
 import handleBars from 'nodemailer-express-handlebars';
 
 export default class NodeMailer {
 	private subject = 'Password Recovery';
-	private resume = 'Password Recovery Link';
 
 	constructor(private name: string){
+		config();
 		name = this.name;
 	}
 
 	mailTransporter() {
+		
 		return nodemailer.createTransport({
-			host: 'smtp.ethereal.email',
-			port: 587,
+			host: process.env.NODEMAILER_HOST as string,
+			port: Number(process.env.NODEMAILER_HOST),
 			auth: {
 				user: process.env.NODEMAILER_USER,
 				pass: process.env.NODEMAILER_PASS
@@ -30,8 +31,6 @@ export default class NodeMailer {
 	}
 
 	async sendEmail(recepientEmail: string, hashCode: string) {
-		dotenv.config();
-		console.log('33', process.env.NODEMAILER_USER, recepientEmail);
 		const mail = {
 			from: process.env.NODEMAILER_USER,
 			to: recepientEmail,
